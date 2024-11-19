@@ -5,19 +5,15 @@ import threading
 
 def sync_view(request):
     print(f'Sync request received at {threading.get_ident()}!: {datetime.now().strftime("%I:%M:%S %p")}')
-    data = {
-        "message": "This is a synchronous endpoint"
-    }
-    time.sleep(10)
+    data = {"message": "This is a synchronous endpoint"}
+    time.sleep(3)
     return JsonResponse(data)
 
 async def async_view(request):
     print(f'Async request received at {threading.get_ident()}!: {datetime.now().strftime("%I:%M:%S %p")}')
-    data = {
-        "message": "This is an asynchronous endpoint",
-    }
+    data = {"message": "This is an asynchronous endpoint"}
     # Simulate an asynchronous operation
-    await asyncio.sleep(10)
+    await asyncio.sleep(3)
     return JsonResponse(data)
 
 
